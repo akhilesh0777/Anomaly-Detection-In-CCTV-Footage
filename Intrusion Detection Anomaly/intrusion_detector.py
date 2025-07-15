@@ -79,8 +79,15 @@ def run_intrusion_detector(video_path):
         # Draw ROI on frame
         cv2.polylines(frame, [np.array(roi, dtype=np.int32)], isClosed=True, color=(255, 0, 0), thickness=2)
 
-        display = cv2.resize(frame, (500, 200))  # Display only resize
-        cv2.imshow("Intrusion Detection", display)
+
+        #for og frames 
+        cv2.imshow("Intrusion Detection", frame)
+
+        # for resized frames
+        # display = cv2.resize(frame, (500, 200))  # Display only resize
+        # cv2.imshow("Intrusion Detection", display)
+
+
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
