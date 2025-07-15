@@ -67,7 +67,9 @@ def launch_roi_gui(image_path):
             cv2.polylines(temp, [np.array(roi_points)], isClosed=True, color=(255, 0, 0), thickness=2)
 
         
-        # cv2.imshow("Draw ROI - Click to Add Points", temp)
+        # cv2.imshow("Draw ROI - Click to Add Points", temp) #for og frames
+        
+        # for resized frame
         display = cv2.resize(temp, (target_width, target_height))
         cv2.imshow("Draw ROI - Click to Add Points", display)
 
