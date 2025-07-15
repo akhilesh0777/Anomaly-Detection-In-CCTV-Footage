@@ -2,7 +2,8 @@ import cv2
 import json
 from ultralytics import YOLO
 from shapely.geometry import Polygon, Point
-
+import os
+import numpy as np
 # ========== GLOBAL VARIABLES ==========
 drawing = False
 roi_points = []
@@ -21,6 +22,7 @@ def draw_roi(event, x, y, flags, param):
 
 # ========== SAVE ROI ==========
 def save_roi(path="roi_config/restricted_area.json"):
+    os.makedirs(os.path.dirname(path), exist_ok=True)  # ✅ Create folder if missing
     with open(path, "w") as f:
         json.dump(roi_points, f)
 
@@ -77,10 +79,14 @@ def run_intrusion_detector(video_path):
         # Draw ROI on frame
         cv2.polylines(frame, [np.array(roi, dtype=np.int32)], isClosed=True, color=(255, 0, 0), thickness=2)
 
-        cv2.imshow("Intrusion Detection", frame)
+        display = cv2.resize(frame, (500, 200))  # Display only resize
+        cv2.imshow("Intrusion Detection", display)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
     cap.release()
     cv2.destroyAllWindows()
 
+if __name__ == "__main__":
+    video_path = "H:/Projects/Anomaly-Detection-In-CCTV-Footage/Moving Crowd Anomaly/test001.mp4" 
+    run_intrusion_detector(video_path)
