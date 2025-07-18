@@ -3,8 +3,8 @@ import os
 import glob
 
 # === CONFIGURATION ===
-frame_folder = "H:/Anomaly Detection in cctv/archive (1)/UCSD_Anomaly_Dataset.v1p2/UCSDped1/Test/Test003"  # Folder containing .tif images
-output_video = "test003.mp4"         # Output video file
+frame_folder = "H:/Anomaly Detection in cctv/archive (1)/UCSD_Anomaly_Dataset.v1p2/UCSDped1/Test/Test004"  # Folder containing .tif images
+output_video = "test004.mp4"         # Output video file
 fps = 25                                  # Frames per second
 
 # === FETCH ALL TIF FRAMES ===
